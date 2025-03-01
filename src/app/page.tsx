@@ -1,4 +1,4 @@
-// import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar";
 // import Hero from "@/components/hero";
 // import Skills from "@/components/skills";
 // import ProfessionalProjects from "@/components/professional-projects";
@@ -9,8 +9,8 @@
 export default function Home() {
   return (
     <main>
-      {/* <Navbar />
-      <Hero />
+      <Navbar />
+      {/* <Hero />
       <Skills />
       <ProfessionalProjects />
       <PersonalProjects />
