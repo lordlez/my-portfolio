@@ -1,13 +1,14 @@
-@import "tailwindcss/preflight";
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #0f0f1a;
+  --background: #0a0b14;
   --foreground: #f8f8ff;
-  --primary: #6d28d9;
-  --secondary: #1e40af;
-  --accent: #8b5cf6;
-  --card: #1a1a2e;
+  --primary: #4169e1;
+  --secondary: #6a5acd;
+  --accent: #7b68ee;
+  --card: #111827;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
 
 @layer components {
   .container-section {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16;
+    @apply max-w-7xl mx-auto px-4 py-16;
   }
 
   .section-title {

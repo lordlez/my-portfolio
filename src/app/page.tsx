@@ -1,5 +1,5 @@
 import Navbar from "@/components/navbar";
-// import Hero from "@/components/hero";
+import Hero from "@/components/hero";
 // import Skills from "@/components/skills";
 // import ProfessionalProjects from "@/components/professional-projects";
 // import PersonalProjects from "@/components/personal-projects";
@@ -10,7 +10,8 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-      {/* <Hero />
+      <Hero />
+      {/*
       <Skills />
       <ProfessionalProjects />
       <PersonalProjects />
