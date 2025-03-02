@@ -8,16 +8,19 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <div className="max-w-2xl">
             <h1 className="text-5xl md:text-6xl font-bold mb-2 text-blue-400">
-              Juan Pérez
+              Lorenzo Lezcano
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-300">
-              Desarrollador Full Stack
+              Desarrollador Web
             </h2>
             <p className="text-gray-400 mb-8 max-w-xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              pulvinar risus non risus hendrerit venenatis. Pellentesque sit
-              amet hendrerit risus, sed porttitor quam. Magna etiam tempor orci
-              eu lobortis elementum nibh.
+              <p className="text-gray-400 mb-8 max-w-xl">
+                Me enfoco en entender las necesidades del negocio y
+                transformarlas en aplicaciones intuitivas, eficientes y
+                visualmente atractivas. Si buscás combinar creatividad con
+                funcionalidad para llevar tus ideas al siguiente nivel, estoy
+                listo para ayudarte.
+              </p>
             </p>
             <div className="flex space-x-4">
               <a
