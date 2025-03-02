@@ -5,8 +5,8 @@ export default function Hero() {
   return (
     <section id="inicio" className="pt-28 pb-16 max-w-7xl mx-auto px-4 py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-          <div className="max-w-2xl">
+        <div className="flex flex-col md:flex-row justify-between items-center md:space-x-8">
+          <div className="max-w-2xl flex-1">
             <h1 className="text-5xl md:text-6xl font-bold mb-2 text-blue-400">
               Lorenzo Lezcano
             </h1>
@@ -14,13 +14,10 @@ export default function Hero() {
               Desarrollador Web
             </h2>
             <p className="text-gray-400 mb-8 max-w-xl">
-              <p className="text-gray-400 mb-8 max-w-xl">
-                Me enfoco en entender las necesidades del negocio y
-                transformarlas en aplicaciones intuitivas, eficientes y
-                visualmente atractivas. Si buscás combinar creatividad con
-                funcionalidad para llevar tus ideas al siguiente nivel, estoy
-                listo para ayudarte.
-              </p>
+              Me enfoco en entender las necesidades del negocio y transformarlas
+              en aplicaciones intuitivas, eficientes y visualmente atractivas.
+              Si buscás combinar creatividad con funcionalidad para llevar tus
+              ideas al siguiente nivel, estoy listo para ayudarte.
             </p>
             <div className="flex space-x-4">
               <a
@@ -37,11 +34,11 @@ export default function Hero() {
               </a>
             </div>
           </div>
-          <div className="hidden md:block">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gray-600">
+          <div className="md:block mt-8 md:mt-0 flex-shrink-0">
+            <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-gray-600 shadow-lg">
               <Image
-                src="/placeholder.svg?height=100&width=100"
-                alt="Foto de perfil"
+                src="/ejemplo-perfil.jpg"
+                alt="Foto de perfil de Lorenzo Lezcano"
                 fill
                 className="object-cover"
               />
