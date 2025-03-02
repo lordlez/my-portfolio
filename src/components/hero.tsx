@@ -3,7 +3,7 @@ import { Download } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="pt-28 pb-16">
+    <section id="inicio" className="pt-28 pb-16 max-w-7xl mx-auto px-4 py-16">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <div className="max-w-2xl">
