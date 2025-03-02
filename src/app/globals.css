@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #0a0b14;
@@ -23,9 +21,5 @@ body {
 
   .section-title {
     @apply text-3xl font-bold mb-10 text-center;
-  }
-
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
   }
 }
