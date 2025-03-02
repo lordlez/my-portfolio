@@ -12,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-transparent fixed w-full z-10 py-4">
+    <nav className="bg-transparent fixed w-full z-10 py-2 backdrop-filter backdrop-blur-md bg-background/70 sticky top-0">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
