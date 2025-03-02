@@ -111,6 +111,7 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                placeholder="Tu nombre"
                 className="w-full px-4 py-2 bg-background border border-foreground/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
@@ -126,6 +127,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                placeholder="tu@email.com"
                 className="w-full px-4 py-2 bg-background border border-foreground/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
@@ -144,6 +146,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={5}
+                placeholder="Escribe tu mensaje aquí..."
                 className="w-full px-4 py-2 bg-background border border-foreground/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
