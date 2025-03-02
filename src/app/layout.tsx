@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import FontAwesomeConfig from "./fontawesome";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        <FontAwesomeConfig />
+      </head>
       <body className={inter.className}>
         <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
           {children}
