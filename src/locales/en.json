@@ -1,0 +1,41 @@
+{
+  "navbar": {
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "personalProjects": "Personal Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Lorenzo Lezcano",
+    "subtitle": "Web Developer",
+    "description": "I focus on understanding business needs and transforming them into intuitive, efficient, and visually appealing applications. If you're looking to combine creativity with functionality to take your ideas to the next level, I'm ready to help you.",
+    "contact": "Contact Me",
+    "downloadCV": "Download CV"
+  },
+  "skills": {
+    "title": "My Skills",
+    "description": "Technologies and tools I work with to create modern and efficient web solutions."
+  },
+  "professionalProjects": {
+    "title": "Professional Projects",
+    "description": "Projects I have worked on professionally, applying my knowledge and skills to create innovative solutions."
+  },
+  "personalProjects": {
+    "title": "Personal Projects",
+    "description": "Projects I have developed in my free time to learn new technologies and improve my skills."
+  },
+  "contact": {
+    "title": "Let's Talk!",
+    "description": "I'm interested in freelance opportunities or full-time positions. If you have any questions or proposals, feel free to contact me.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Message sent successfully! I'll get back to you as soon as possible.",
+    "error": "There was an error sending the message. Please try again."
+  },
+  "footer": {
+    "copyright": "Lorenzo Lezcano © {year}"
+  }
+}

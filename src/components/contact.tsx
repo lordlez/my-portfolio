@@ -1,9 +1,17 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { Github, Instagram, Linkedin, Send } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import esTranslations from "@/locales/es.json";
+import enTranslations from "@/locales/en.json";
+import { Translations, Language } from "@/locales/types";
+
+const translations: Record<Language, Translations> = {
+  es: esTranslations,
+  en: enTranslations,
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,6 +23,8 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(
     null
   );
+  const { language } = useLanguage();
+  const t = translations[language];
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -60,19 +70,15 @@ export default function Contact() {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
-          <h3 className="text-4xl font-bold mb-4">¡Hablemos!</h3>
-          <p className="text-foreground/80 mb-6">
-            Estoy interesado en oportunidades freelance o posiciones a tiempo
-            completo. Si tienes alguna pregunta o propuesta, no dudes en
-            contactarme.
-          </p>
+          <h3 className="text-4xl font-bold mb-4">{t.contact.title}</h3>
+          <p className="text-foreground mb-6">{t.contact.description}</p>
 
           <div className="flex items-center space-x-6 mb-8">
             <a
               href="https://github.com/username"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/80 hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer"
               aria-label="GitHub"
             >
               <Github className="w-8 h-8" />
@@ -81,7 +87,7 @@ export default function Contact() {
               href="https://linkedin.com/in/username"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/80 hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-8 h-8" />
@@ -90,7 +96,7 @@ export default function Contact() {
               href="https://instagram.com/username"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/80 hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer"
               aria-label="Instagram"
             >
               <Instagram className="w-8 h-8" />
@@ -102,7 +108,7 @@ export default function Contact() {
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="name" className="block text-sm font-medium mb-1">
-                Nombre
+                {t.contact.name}
               </label>
               <input
                 type="text"
@@ -111,14 +117,14 @@ export default function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                placeholder="Tu nombre"
+                placeholder={t.contact.name}
                 className="w-full px-4 py-2 bg-background border border-foreground/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
 
             <div className="mb-4">
               <label htmlFor="email" className="block text-sm font-medium mb-1">
-                Email
+                {t.contact.email}
               </label>
               <input
                 type="email"
@@ -127,7 +133,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                placeholder="tu@email.com"
+                placeholder={t.contact.email}
                 className="w-full px-4 py-2 bg-background border border-foreground/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
@@ -137,7 +143,7 @@ export default function Contact() {
                 htmlFor="message"
                 className="block text-sm font-medium mb-1"
               >
-                Mensaje
+                {t.contact.message}
               </label>
               <textarea
                 id="message"
@@ -146,7 +152,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 rows={5}
-                placeholder="Escribe tu mensaje aquí..."
+                placeholder={t.contact.message}
                 className="w-full px-4 py-2 bg-background border border-foreground/20 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
@@ -160,22 +166,17 @@ export default function Contact() {
                 "Enviando..."
               ) : (
                 <>
-                  Enviar mensaje <Send className="w-5 h-5" />
+                  {t.contact.send} <Send className="w-5 h-5" />
                 </>
               )}
             </button>
 
             {submitStatus === "success" && (
-              <p className="mt-4 text-green-400 text-sm">
-                ¡Mensaje enviado con éxito! Te responderé lo antes posible.
-              </p>
+              <p className="mt-4 text-green-400 text-sm">{t.contact.success}</p>
             )}
 
             {submitStatus === "error" && (
-              <p className="mt-4 text-red-400 text-sm">
-                Hubo un error al enviar el mensaje. Por favor, inténtalo de
-                nuevo.
-              </p>
+              <p className="mt-4 text-red-400 text-sm">{t.contact.error}</p>
             )}
           </form>
         </div>

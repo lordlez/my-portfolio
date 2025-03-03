@@ -1,3 +1,5 @@
+"use client";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHtml5,
@@ -8,6 +10,15 @@ import {
   faGitAlt,
 } from "@fortawesome/free-brands-svg-icons";
 import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { useLanguage } from "@/context/LanguageContext";
+import esTranslations from "@/locales/es.json";
+import enTranslations from "@/locales/en.json";
+import { Translations, Language } from "@/locales/types";
+
+const translations: Record<Language, Translations> = {
+  es: esTranslations,
+  en: enTranslations,
+};
 
 const skills = [
   { name: "HTML", icon: faHtml5, color: "text-orange-400" },
@@ -21,13 +32,15 @@ const skills = [
 ];
 
 export default function Skills() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="habilidades" className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4">Mis Habilidades</h2>
+        <h2 className="text-4xl font-bold mb-4">{t.skills.title}</h2>
         <p className="text-foreground text-lg max-w-3xl mx-auto">
-          Tecnologías y herramientas con las que trabajo para crear soluciones
-          web modernas y eficientes.
+          {t.skills.description}
         </p>
       </div>
 

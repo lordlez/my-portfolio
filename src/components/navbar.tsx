@@ -4,18 +4,24 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, Moon, Sun, Globe } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { useLanguage } from "@/context/LanguageContext";
+import esTranslations from "@/locales/es.json";
+import enTranslations from "@/locales/en.json";
+import { Translations, Language } from "@/locales/types";
+
+const translations: Record<Language, Translations> = {
+  es: esTranslations,
+  en: enTranslations,
+};
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleDarkMode } = useTheme();
-  const [language, setLanguage] = useState("es");
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language]; // Ahora TypeScript sabe que `t` es de tipo `Translations`
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleLanguage = () => {
-    setLanguage(language === "es" ? "en" : "es");
   };
 
   return (
@@ -43,31 +49,31 @@ export default function Navbar() {
               href="#inicio"
               className="text-foreground hover:text-gray-500 transition-colors"
             >
-              Inicio
+              {t.navbar.home}
             </Link>
             <Link
               href="#habilidades"
               className="text-foreground hover:text-gray-500 transition-colors"
             >
-              Habilidades
+              {t.navbar.skills}
             </Link>
             <Link
               href="#trabajos"
               className="text-foreground hover:text-gray-500 transition-colors"
             >
-              Proyectos
+              {t.navbar.projects}
             </Link>
             <Link
               href="#proyectos"
               className="text-foreground hover:text-gray-500 transition-colors"
             >
-              Proyectos Personales
+              {t.navbar.personalProjects}
             </Link>
             <Link
               href="#contacto"
               className="text-foreground hover:text-gray-500 transition-colors"
             >
-              Contacto
+              {t.navbar.contact}
             </Link>
           </div>
           <div className="md:hidden">
@@ -91,35 +97,35 @@ export default function Navbar() {
               className="block py-2 text-foreground hover:text-gray-500"
               onClick={toggleMenu}
             >
-              Inicio
+              {t.navbar.home}
             </Link>
             <Link
               href="#habilidades"
               className="block py-2 text-foreground hover:text-gray-500"
               onClick={toggleMenu}
             >
-              Habilidades
+              {t.navbar.skills}
             </Link>
             <Link
               href="#trabajos"
               className="block py-2 text-foreground hover:text-gray-500"
               onClick={toggleMenu}
             >
-              Proyectos
+              {t.navbar.projects}
             </Link>
             <Link
               href="#proyectos"
               className="block py-2 text-foreground hover:text-gray-500"
               onClick={toggleMenu}
             >
-              Proyectos Personales
+              {t.navbar.personalProjects}
             </Link>
             <Link
               href="#contacto"
               className="block py-2 text-foreground hover:text-gray-500"
               onClick={toggleMenu}
             >
-              Contacto
+              {t.navbar.contact}
             </Link>
           </div>
         </div>

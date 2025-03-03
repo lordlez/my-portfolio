@@ -1,4 +1,15 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import esTranslations from "@/locales/es.json";
+import enTranslations from "@/locales/en.json";
+import { Translations, Language } from "@/locales/types";
+
+const translations: Record<Language, Translations> = {
+  es: esTranslations,
+  en: enTranslations,
+};
 
 const professionalProjects = [
   {
@@ -32,13 +43,17 @@ const professionalProjects = [
 ];
 
 export default function ProfessionalProjects() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="trabajos" className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4">Proyectos Profesionales</h2>
+        <h2 className="text-4xl font-bold mb-4">
+          {t.professionalProjects.title}
+        </h2>
         <p className="text-foreground text-lg max-w-3xl mx-auto">
-          Proyectos en los que he trabajado profesionalmente, aplicando mis
-          conocimientos y habilidades para crear soluciones innovadoras.
+          {t.professionalProjects.description}
         </p>
       </div>
 

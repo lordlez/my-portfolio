@@ -1,5 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import { Github, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import esTranslations from "@/locales/es.json";
+import enTranslations from "@/locales/en.json";
+import { Translations, Language } from "@/locales/types";
+
+const translations: Record<Language, Translations> = {
+  es: esTranslations,
+  en: enTranslations,
+};
 
 const personalProjects = [
   {
@@ -40,13 +51,15 @@ const personalProjects = [
 ];
 
 export default function PersonalProjects() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="proyectos" className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4">Proyectos Personales</h2>
+        <h2 className="text-4xl font-bold mb-4">{t.personalProjects.title}</h2>
         <p className="text-foreground text-lg max-w-3xl mx-auto">
-          Proyectos que he desarrollado en mi tiempo libre para aprender nuevas
-          tecnologías y mejorar mis habilidades.
+          {t.personalProjects.description}
         </p>
       </div>
 
