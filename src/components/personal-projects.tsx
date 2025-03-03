@@ -14,76 +14,77 @@ const translations: Record<Language, Translations> = {
 
 const personalProjectsES = [
   {
-    title: "Portfolio Personal",
-    image: "/placeholder.svg?height=300&width=500",
-    description: "Mi sitio web personal construido con Next.js y Tailwind CSS.",
-    technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
-    demoUrl: "https://portfolio.example.com",
-    githubUrl: "https://github.com/username/portfolio",
+    title: "GuitarLA",
+    image: "/guitarla-img.png",
+    description: "Plataforma de ventas de guitarras.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    demoUrl: "https://shopping-cart-lordlez.netlify.app/",
+    githubUrl: "https://github.com/lordlez/shopping-cart",
   },
   {
-    title: "Aplicación de Clima",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "Documentación de C",
+    image: "/c-img.png",
     description:
-      "Aplicación que muestra el clima actual y pronóstico utilizando APIs.",
-    technologies: ["React", "OpenWeather API", "CSS Modules"],
-    demoUrl: "https://weather.example.com",
-    githubUrl: "https://github.com/username/weather-app",
+      "El objetivo de este proyecto fue simular un sitio web técnico que brinda información sobre el lenguaje de programación C.",
+    technologies: ["HTML", "CSS"],
+    demoUrl: "https://lordlez.github.io/documentacion-C/",
+    githubUrl: "https://github.com/lordlez/documentacion-C",
   },
   {
-    title: "Gestor de Tareas",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "Pokédex",
+    image: "/pokedex-img.png",
     description:
-      "Aplicación de gestión de tareas con autenticación y almacenamiento en la nube.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    demoUrl: "https://tasks.example.com",
-    githubUrl: "https://github.com/username/task-manager",
+      "El proyecto consiste en una aplicación que, usando la API de Pokémon, permite al usuario ingresar un número o nombre de un Pokémon para obtener su imagen.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    demoUrl: "https://lordlez.github.io/pokedexProject/",
+    githubUrl: "https://github.com/lordlez/pokedexProject",
   },
   {
-    title: "Blog Personal",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "Blog de Café",
+    image: "/cafe-img.png",
     description:
-      "Blog personal con sistema de gestión de contenidos basado en Markdown.",
-    technologies: ["Next.js", "MDX", "Tailwind CSS"],
-    demoUrl: "https://blog.example.com",
-    githubUrl: "https://github.com/username/blog",
+      "El objetivo de este proyecto fue crear un sitio web de informacion, venta y contacto con temática de café",
+    technologies: ["HTML", "CSS"],
+    demoUrl: "https://lordlez.github.io/BlogCafe/",
+    githubUrl: "https://github.com/lordlez/BlogCafe",
   },
 ];
 
 const personalProjectsEN = [
   {
-    title: "Personal Portfolio",
-    image: "/placeholder.svg?height=300&width=500",
-    description: "My personal website built with Next.js and Tailwind CSS.",
-    technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
-    demoUrl: "https://portfolio.example.com",
-    githubUrl: "https://github.com/username/portfolio",
+    title: "GuitarLA",
+    image: "/guitarla-img.png",
+    description: "Guitar sales platform.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    demoUrl: "https://shopping-cart-lordlez.netlify.app/",
+    githubUrl: "https://github.com/lordlez/shopping-cart",
   },
   {
-    title: "Weather App",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "Documentation of C",
+    image: "/c-img.png",
     description:
-      "Application that displays current weather and forecast using APIs.",
-    technologies: ["React", "OpenWeather API", "CSS Modules"],
-    demoUrl: "https://weather.example.com",
-    githubUrl: "https://github.com/username/weather-app",
+      "The goal of this project was to simulate a technical website that provides information about the C programming language.",
+    technologies: ["HTML", "CSS"],
+    demoUrl: "https://lordlez.github.io/documentacion-C/",
+    githubUrl: "https://github.com/lordlez/documentacion-C",
   },
   {
-    title: "Task Manager",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "Pokédex",
+    image: "/pokedex-img.png",
     description:
-      "Task management application with authentication and cloud storage.",
-    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
-    demoUrl: "https://tasks.example.com",
-    githubUrl: "https://github.com/username/task-manager",
+      "The project consists of an application that, using the Pokémon API, allows the user to enter a Pokémon number or name to obtain its image.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    demoUrl: "https://lordlez.github.io/pokedexProject/",
+    githubUrl: "https://github.com/lordlez/pokedexProject",
   },
   {
-    title: "Personal Blog",
-    image: "/placeholder.svg?height=300&width=500",
-    description: "Personal blog with Markdown-based content management system.",
-    technologies: ["Next.js", "MDX", "Tailwind CSS"],
-    demoUrl: "https://blog.example.com",
-    githubUrl: "https://github.com/username/blog",
+    title: "Coffee Blog",
+    image: "/cafe-img.png",
+    description:
+      "The goal of this project was to create an information, sale and contact website with a coffee theme",
+    technologies: ["HTML", "CSS"],
+    demoUrl: "https://lordlez.github.io/BlogCafe/",
+    githubUrl: "https://github.com/lordlez/BlogCafe",
   },
 ];
 
@@ -114,7 +115,7 @@ export default function PersonalProjects() {
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
                 fill
-                className="object-cover"
+                className="object-fill"
               />
             </div>
             <div className="p-6">
