@@ -13,63 +13,49 @@ const translations: Record<Language, Translations> = {
 
 const professionalProjectsES = [
   {
-    title: "E-commerce Platform",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "FlyDevs - Administración Interna De Usuarios",
+    image: "/flydevs-img.png",
     description:
-      "Plataforma de comercio electrónico con sistema de pagos integrado y gestión de inventario en tiempo real.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      "Plataforma de administración interna de usuarios para el control de horas, actividades, etc.",
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "CRM Dashboard",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "JollyTok - Plataforma de juegos",
+    image: "/jollytok-img.png",
     description:
-      "Dashboard interactivo para gestión de relaciones con clientes, con análisis de datos y reportes personalizados.",
-    technologies: ["Angular", "Express", "PostgreSQL", "Chart.js"],
+      "Plataforma interactiva para juegos conectada a la red social TikTok.",
+    technologies: ["React", "TypeScript", "Node.js", "Firebase"],
   },
   {
-    title: "Fintech App",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "TULiP - Landing Page",
+    image: "/tulip-img.png",
     description:
-      "Aplicación móvil para gestión financiera personal con integración de múltiples cuentas bancarias y criptomonedas.",
-    technologies: ["React Native", "Firebase", "Redux", "Plaid API"],
-  },
-  {
-    title: "Real Estate Platform",
-    image: "/placeholder.svg?height=300&width=500",
-    description:
-      "Plataforma para búsqueda y gestión de propiedades inmobiliarias con mapas interactivos y tours virtuales.",
-    technologies: ["Next.js", "Tailwind CSS", "Supabase", "Mapbox"],
+      "Plataforma que conecta a doctores con pacientes de una manera sencilla e intuitiva.",
+    technologies: ["React", "Tailwind CSS"],
   },
 ];
 
 const professionalProjectsEN = [
   {
-    title: "E-commerce Platform",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "FlyDevs - Internal User Administration",
+    image: "/flydevs-img.png",
     description:
-      "E-commerce platform with integrated payment system and real-time inventory management.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      "Internal user administration platform to control hours, activities, etc.",
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "CRM Dashboard",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "JollyTok - Gaming Platform",
+    image: "/jollytok-img.png",
     description:
-      "Interactive dashboard for customer relationship management, with data analysis and custom reports.",
-    technologies: ["Angular", "Express", "PostgreSQL", "Chart.js"],
+      "Interactive gaming platform connected to the TikTok social network.",
+    technologies: ["React", "TypeScript", "Node.js", "Firebase"],
   },
   {
-    title: "Fintech App",
-    image: "/placeholder.svg?height=300&width=500",
+    title: "TULiP - Landing Page",
+    image: "/tulip-img.png",
     description:
-      "Mobile application for personal financial management with integration of multiple bank accounts and cryptocurrencies.",
-    technologies: ["React Native", "Firebase", "Redux", "Plaid API"],
-  },
-  {
-    title: "Real Estate Platform",
-    image: "/placeholder.svg?height=300&width=500",
-    description:
-      "Platform for searching and managing real estate properties with interactive maps and virtual tours.",
-    technologies: ["Next.js", "Tailwind CSS", "Supabase", "Mapbox"],
+      "Platform that connects doctors with patients in a simple and intuitive way.",
+    technologies: ["React", "Tailwind CSS"],
   },
 ];
 
@@ -102,7 +88,7 @@ export default function ProfessionalProjects() {
                 src={project.image || "/placeholder.svg"}
                 alt={project.title}
                 fill
-                className="object-cover"
+                className="object-fill"
               />
             </div>
             <div className="p-6">
