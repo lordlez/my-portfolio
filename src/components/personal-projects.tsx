@@ -5,14 +5,14 @@ import { Github, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
-import { Translations, Language } from "@/locales/types";
+import type { Translations, Language } from "@/locales/types";
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
   en: enTranslations,
 };
 
-const personalProjects = [
+const personalProjectsES = [
   {
     title: "Portfolio Personal",
     image: "/placeholder.svg?height=300&width=500",
@@ -50,9 +50,49 @@ const personalProjects = [
   },
 ];
 
+const personalProjectsEN = [
+  {
+    title: "Personal Portfolio",
+    image: "/placeholder.svg?height=300&width=500",
+    description: "My personal website built with Next.js and Tailwind CSS.",
+    technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
+    demoUrl: "https://portfolio.example.com",
+    githubUrl: "https://github.com/username/portfolio",
+  },
+  {
+    title: "Weather App",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "Application that displays current weather and forecast using APIs.",
+    technologies: ["React", "OpenWeather API", "CSS Modules"],
+    demoUrl: "https://weather.example.com",
+    githubUrl: "https://github.com/username/weather-app",
+  },
+  {
+    title: "Task Manager",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "Task management application with authentication and cloud storage.",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+    demoUrl: "https://tasks.example.com",
+    githubUrl: "https://github.com/username/task-manager",
+  },
+  {
+    title: "Personal Blog",
+    image: "/placeholder.svg?height=300&width=500",
+    description: "Personal blog with Markdown-based content management system.",
+    technologies: ["Next.js", "MDX", "Tailwind CSS"],
+    demoUrl: "https://blog.example.com",
+    githubUrl: "https://github.com/username/blog",
+  },
+];
+
 export default function PersonalProjects() {
   const { language } = useLanguage();
   const t = translations[language];
+
+  const personalProjects =
+    language === "es" ? personalProjectsES : personalProjectsEN;
 
   return (
     <section id="proyectos" className="max-w-7xl mx-auto px-4 py-16">
@@ -107,7 +147,7 @@ export default function PersonalProjects() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-colors"
                 >
-                  <Github size={18} /> Código
+                  <Github size={18} /> {language === "es" ? "Código" : "Code"}
                 </a>
               </div>
             </div>

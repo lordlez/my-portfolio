@@ -4,14 +4,14 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
-import { Translations, Language } from "@/locales/types";
+import type { Translations, Language } from "@/locales/types";
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
   en: enTranslations,
 };
 
-const professionalProjects = [
+const professionalProjectsES = [
   {
     title: "E-commerce Platform",
     image: "/placeholder.svg?height=300&width=500",
@@ -42,9 +42,43 @@ const professionalProjects = [
   },
 ];
 
+const professionalProjectsEN = [
+  {
+    title: "E-commerce Platform",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "E-commerce platform with integrated payment system and real-time inventory management.",
+    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+  },
+  {
+    title: "CRM Dashboard",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "Interactive dashboard for customer relationship management, with data analysis and custom reports.",
+    technologies: ["Angular", "Express", "PostgreSQL", "Chart.js"],
+  },
+  {
+    title: "Fintech App",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "Mobile application for personal financial management with integration of multiple bank accounts and cryptocurrencies.",
+    technologies: ["React Native", "Firebase", "Redux", "Plaid API"],
+  },
+  {
+    title: "Real Estate Platform",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "Platform for searching and managing real estate properties with interactive maps and virtual tours.",
+    technologies: ["Next.js", "Tailwind CSS", "Supabase", "Mapbox"],
+  },
+];
+
 export default function ProfessionalProjects() {
   const { language } = useLanguage();
   const t = translations[language];
+
+  const professionalProjects =
+    language === "es" ? professionalProjectsES : professionalProjectsEN;
 
   return (
     <section id="trabajos" className="max-w-7xl mx-auto px-4 py-16">
