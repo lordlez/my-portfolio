@@ -1,12 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0b14;
-  --foreground: #f8f8ff;
-  --primary: #4169e1;
-  --secondary: #6a5acd;
-  --accent: #7b68ee;
-  --card: #111827;
+  --background: #0a0b14; /* Fondo oscuro */
+  --foreground: #e3e3e3; /* Texto gris claro (modo oscuro) */
+  --primary: #4169e1; /* Azul primario */
+  --secondary: #6a5acd; /* Azul secundario */
+  --accent: #7b68ee; /* Acento */
+  --card: #111827; /* Fondo de tarjetas oscuro */
+}
+
+[data-theme="light"] {
+  --background: #f8f8ff; /* Fondo claro */
+  --foreground: #464646; /* Texto gris oscuro (modo claro) */
+  --primary: #4169e1; /* Azul primario */
+  --secondary: #6a5acd; /* Azul secundario */
+  --accent: #7b68ee; /* Acento */
+  --card: #e5e7eb; /* Fondo de tarjetas claro (gris) */
 }
 
 body {

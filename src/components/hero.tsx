@@ -13,7 +13,7 @@ export default function Hero() {
             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-300">
               Desarrollador Web
             </h2>
-            <p className="text-gray-400 mb-8 max-w-xl">
+            <p className="text-foreground mb-8 max-w-xl">
               Me enfoco en entender las necesidades del negocio y transformarlas
               en aplicaciones intuitivas, eficientes y visualmente atractivas.
               Si buscás combinar creatividad con funcionalidad para llevar tus
@@ -28,7 +28,7 @@ export default function Hero() {
               </a>
               <a
                 href="#"
-                className="px-6 py-3 border border-gray-600 text-white hover:bg-gray-800 rounded-md transition-colors flex items-center gap-2"
+                className="px-6 py-3 border border-gray-600 text-foreground hover:bg-gray-200 rounded-md transition-colors flex items-center gap-2"
               >
                 <Download size={18} /> Descargar CV
               </a>
