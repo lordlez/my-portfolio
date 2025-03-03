@@ -39,7 +39,7 @@ export default function Hero() {
               </a>
               <a
                 href="#"
-                className="px-6 py-3 border border-gray-600 text-foreground hover:bg-gray-200 rounded-md transition-colors flex items-center gap-2"
+                className="px-6 py-3 border border-gray-600 text-foreground rounded-md transition-colors flex items-center gap-2"
               >
                 <Download size={18} /> {t.hero.downloadCV}
               </a>
