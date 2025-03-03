@@ -1,14 +1,27 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
+import esTranslations from "@/locales/es.json";
+import enTranslations from "@/locales/en.json";
+import { Translations, Language } from "@/locales/types";
+
+const translations: Record<Language, Translations> = {
+  es: esTranslations,
+  en: enTranslations,
+};
 
 const navLinks = [
-  { name: "Inicio", href: "#inicio" },
-  { name: "Habilidades", href: "#habilidades" },
-  { name: "Proyectos", href: "#trabajos" },
-  { name: "Proyectos Personales", href: "#proyectos" },
-  { name: "Contacto", href: "#contacto" },
+  { name: "home", href: "#inicio" },
+  { name: "skills", href: "#habilidades" },
+  { name: "projects", href: "#trabajos" },
+  { name: "personalProjects", href: "#proyectos" },
+  { name: "contact", href: "#contacto" },
 ];
 
 export default function Footer() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const currentYear = new Date().getFullYear();
 
   return (
@@ -18,7 +31,7 @@ export default function Footer() {
           <div className="flex-shrink-0 mb-4 sm:mb-0">
             <Link href="/" className="transition-colors">
               <p className="text-sm text-foreground hover:text-primary transition-colors">
-                Lorenzo Lezcano &copy; {currentYear}
+                {t.footer.copyright.replace("{year}", currentYear.toString())}
               </p>
             </Link>
           </div>
@@ -29,7 +42,7 @@ export default function Footer() {
                 href={link.href}
                 className="text-sm text-foreground hover:text-primary transition-colors"
               >
-                {link.name}
+                {t.navbar[link.name as keyof typeof t.navbar]}
               </Link>
             ))}
           </nav>

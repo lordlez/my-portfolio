@@ -1,6 +1,17 @@
-import Image from "next/image";
+"use client";
 
-const professionalProjects = [
+import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
+import esTranslations from "@/locales/es.json";
+import enTranslations from "@/locales/en.json";
+import type { Translations, Language } from "@/locales/types";
+
+const translations: Record<Language, Translations> = {
+  es: esTranslations,
+  en: enTranslations,
+};
+
+const professionalProjectsES = [
   {
     title: "E-commerce Platform",
     image: "/placeholder.svg?height=300&width=500",
@@ -31,14 +42,52 @@ const professionalProjects = [
   },
 ];
 
+const professionalProjectsEN = [
+  {
+    title: "E-commerce Platform",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "E-commerce platform with integrated payment system and real-time inventory management.",
+    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+  },
+  {
+    title: "CRM Dashboard",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "Interactive dashboard for customer relationship management, with data analysis and custom reports.",
+    technologies: ["Angular", "Express", "PostgreSQL", "Chart.js"],
+  },
+  {
+    title: "Fintech App",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "Mobile application for personal financial management with integration of multiple bank accounts and cryptocurrencies.",
+    technologies: ["React Native", "Firebase", "Redux", "Plaid API"],
+  },
+  {
+    title: "Real Estate Platform",
+    image: "/placeholder.svg?height=300&width=500",
+    description:
+      "Platform for searching and managing real estate properties with interactive maps and virtual tours.",
+    technologies: ["Next.js", "Tailwind CSS", "Supabase", "Mapbox"],
+  },
+];
+
 export default function ProfessionalProjects() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  const professionalProjects =
+    language === "es" ? professionalProjectsES : professionalProjectsEN;
+
   return (
     <section id="trabajos" className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4">Proyectos Profesionales</h2>
+        <h2 className="text-4xl font-bold mb-4">
+          {t.professionalProjects.title}
+        </h2>
         <p className="text-foreground text-lg max-w-3xl mx-auto">
-          Proyectos en los que he trabajado profesionalmente, aplicando mis
-          conocimientos y habilidades para crear soluciones innovadoras.
+          {t.professionalProjects.description}
         </p>
       </div>
 
