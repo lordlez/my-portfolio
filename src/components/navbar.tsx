@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Moon, Sun, Globe } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
-import { Translations, Language } from "@/locales/types";
+import type { Translations, Language } from "@/locales/types";
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
@@ -18,7 +18,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleDarkMode } = useTheme();
   const { language, toggleLanguage } = useLanguage();
-  const t = translations[language]; // Ahora TypeScript sabe que `t` es de tipo `Translations`
+  const t = translations[language];
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -28,20 +28,34 @@ export default function Navbar() {
     <nav className="bg-transparent fixed w-full z-10 py-2 backdrop-filter backdrop-blur-md bg-background/70 sticky top-0">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6">
             <button
               onClick={toggleDarkMode}
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer p-2"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
             </button>
             <button
               onClick={toggleLanguage}
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
+              className="text-foreground hover:text-primary transition-colors cursor-pointer flex items-center"
               aria-label="Toggle language"
             >
-              <Globe size={24} />
+              <span
+                className={`text-2xl ${
+                  language === "es" ? "opacity-100" : "opacity-50"
+                } transition-opacity`}
+              >
+                🇪🇸
+              </span>
+              <span className="mx-[2px]">/</span>
+              <span
+                className={`text-2xl ${
+                  language === "en" ? "opacity-100" : "opacity-50"
+                } transition-opacity`}
+              >
+                🇬🇧
+              </span>
             </button>
           </div>
           <div className="hidden md:flex items-center space-x-8">
@@ -79,7 +93,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-foreground hover:text-primary cursor-pointer"
+              className="text-foreground hover:text-primary cursor-pointer p-2"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
