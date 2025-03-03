@@ -36,7 +36,7 @@ export default function ProfessionalProjects() {
     <section id="trabajos" className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold mb-4">Proyectos Profesionales</h2>
-        <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+        <p className="text-foreground text-lg max-w-3xl mx-auto">
           Proyectos en los que he trabajado profesionalmente, aplicando mis
           conocimientos y habilidades para crear soluciones innovadoras.
         </p>
@@ -46,7 +46,7 @@ export default function ProfessionalProjects() {
         {professionalProjects.map((project, index) => (
           <div
             key={index}
-            className="bg-[#0A0B14] rounded-xl overflow-hidden border border-gray-800"
+            className="bg-card rounded-xl overflow-hidden border border-gray-800"
           >
             <div className="relative h-64 w-full">
               <Image
@@ -57,10 +57,10 @@ export default function ProfessionalProjects() {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2 text-white">
+              <h3 className="text-2xl font-bold mb-2 text-foreground">
                 {project.title}
               </h3>
-              <p className="text-gray-400 mb-4">{project.description}</p>
+              <p className="text-foreground mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, techIndex) => (
                   <span

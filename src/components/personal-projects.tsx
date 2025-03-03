@@ -44,7 +44,7 @@ export default function PersonalProjects() {
     <section id="proyectos" className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold mb-4">Proyectos Personales</h2>
-        <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+        <p className="text-foreground text-lg max-w-3xl mx-auto">
           Proyectos que he desarrollado en mi tiempo libre para aprender nuevas
           tecnologías y mejorar mis habilidades.
         </p>
@@ -54,7 +54,7 @@ export default function PersonalProjects() {
         {personalProjects.map((project, index) => (
           <div
             key={index}
-            className="bg-[#0A0B14] rounded-xl overflow-hidden border border-gray-800"
+            className="bg-card rounded-xl overflow-hidden border border-gray-800"
           >
             <div className="relative h-64 w-full">
               <Image
@@ -65,10 +65,10 @@ export default function PersonalProjects() {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2 text-white">
+              <h3 className="text-2xl font-bold mb-2 text-foreground">
                 {project.title}
               </h3>
-              <p className="text-gray-400 mb-4">{project.description}</p>
+              <p className="text-foreground mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.technologies.map((tech, techIndex) => (
                   <span
@@ -84,7 +84,7 @@ export default function PersonalProjects() {
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-white text-black border border-foreground rounded-lg font-medium hover:bg-gray-200 transition-colors"
                 >
                   <ExternalLink size={18} /> Demo
                 </a>

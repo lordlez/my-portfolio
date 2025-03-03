@@ -1,15 +1,12 @@
+"use client";
+
 import type React from "react";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import FontAwesomeConfig from "./fontawesome";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Mi Portfolio",
-  description: "Portfolio profesional creado con Next.js",
-};
 
 export default function RootLayout({
   children,
@@ -22,9 +19,12 @@ export default function RootLayout({
         <FontAwesomeConfig />
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
-          {children}
-        </div>
+        <ThemeProvider>
+          {" "}
+          <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

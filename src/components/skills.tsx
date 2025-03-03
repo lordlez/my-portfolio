@@ -25,7 +25,7 @@ export default function Skills() {
     <section id="habilidades" className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold mb-4">Mis Habilidades</h2>
-        <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+        <p className="text-foreground text-lg max-w-3xl mx-auto">
           Tecnologías y herramientas con las que trabajo para crear soluciones
           web modernas y eficientes.
         </p>
@@ -35,14 +35,14 @@ export default function Skills() {
         {skills.map((skill, index) => (
           <div
             key={index}
-            className="p-6 rounded-lg border border-gray-800 bg-gray-900/50 flex flex-col items-center justify-center hover:border-gray-700 transition-colors"
+            className="p-6 rounded-lg border border-gray-800 bg-card flex flex-col items-center justify-center hover:border-gray-700 transition-colors"
           >
             <FontAwesomeIcon
               icon={skill.icon}
               className={`${skill.color}`}
               size="3x"
             />
-            <h3 className="text-lg font-medium text-gray-200 mt-4">
+            <h3 className="text-lg font-medium text-foreground mt-4">
               {skill.name}
             </h3>
           </div>
