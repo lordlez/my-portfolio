@@ -34,6 +34,11 @@ export interface Translations {
     send: string;
     success: string;
     error: string;
+    another: string;
+    nameMin: string;
+    emailInvalid: string;
+    messageMin: string;
+    sending: string;
   };
   footer: {
     copyright: string;
