@@ -33,7 +33,12 @@
     "message": "Message",
     "send": "Send Message",
     "success": "Message sent successfully! I'll get back to you as soon as possible.",
-    "error": "There was an error sending the message. Please try again."
+    "error": "There was an error sending the message. Please try again.",
+    "another": "Send another message",
+    "nameMin": "Name must be at least 3 characters.",
+    "emailInvalid": "Email is not valid.",
+    "messageMin": "Message must be at least 10 characters.",
+    "sending": "Sending..."
   },
   "footer": {
     "copyright": "Lorenzo Lezcano © {year}"
