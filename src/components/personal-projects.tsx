@@ -99,23 +99,18 @@ const personalProjectsEN = [
   },
 ];
 
-// Hook para detectar si es un dispositivo móvil
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Función para verificar si es móvil basado en el ancho de la ventana
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Verificar al inicio
     checkIsMobile();
 
-    // Agregar listener para cambios de tamaño de ventana
     window.addEventListener("resize", checkIsMobile);
 
-    // Limpiar listener
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
@@ -281,7 +276,6 @@ function ProjectCard({
             !isMobile
               ? {
                   x: isHovered ? 10 : 0,
-                  color: isHovered ? "#6366f1" : "currentColor",
                 }
               : {}
           }
@@ -305,10 +299,6 @@ function ProjectCard({
             <motion.span
               key={techIndex}
               className="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-full"
-              whileHover={
-                !isMobile ? { scale: 1.1, backgroundColor: "#4f46e5" } : {}
-              }
-              transition={{ duration: 0.2 }}
             >
               {tech}
             </motion.span>
