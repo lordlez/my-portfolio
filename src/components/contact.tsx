@@ -1,14 +1,12 @@
 "use client";
 
-import type React from "react";
-
 import { useState, type FormEvent, useEffect, useRef } from "react";
 import { Github, Instagram, Linkedin, Send } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
 import type { Translations, Language } from "@/locales/types";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
@@ -60,11 +58,12 @@ export default function Contact() {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
   const messageInputRef = useRef<HTMLTextAreaElement>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     const styleElement = document.createElement("style");
     styleElement.textContent = `
-      /* Eliminar solo el fondo de autocompletado */
       input:-webkit-autofill,
       input:-webkit-autofill:hover,
       input:-webkit-autofill:focus,
@@ -129,6 +128,7 @@ export default function Contact() {
     t.contact.nameMin,
     t.contact.emailInvalid,
     t.contact.messageMin,
+    errors,
   ]);
 
   const validateForm = (formData: {
@@ -197,9 +197,13 @@ export default function Contact() {
   };
 
   return (
-    <section
+    <motion.section
       id="contacto"
       className="container-section max-w-7xl mx-auto px-4 py-16"
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.5 }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
@@ -337,6 +341,6 @@ export default function Contact() {
           )}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

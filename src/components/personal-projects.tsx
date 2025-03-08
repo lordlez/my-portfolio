@@ -5,8 +5,8 @@ import { Github, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import type { Translations, Language } from "@/locales/types";
 
 interface Project {
@@ -117,15 +117,28 @@ function useIsMobile() {
   return isMobile;
 }
 
-export default function PersonalProjects() {
+interface PersonalProjectsProps {
+  className?: string;
+}
+
+export default function PersonalProjects({ className }: PersonalProjectsProps) {
   const { language } = useLanguage();
   const t = translations[language];
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const personalProjects =
     language === "es" ? personalProjectsES : personalProjectsEN;
 
   return (
-    <section id="proyectos" className="max-w-7xl mx-auto px-4 py-16">
+    <motion.section
+      id="proyectos"
+      className={`max-w-7xl mx-auto px-4 py-16 ${className}`}
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.5 }}
+    >
       <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0 }}
@@ -148,7 +161,7 @@ export default function PersonalProjects() {
           />
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
 

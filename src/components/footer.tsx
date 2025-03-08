@@ -5,6 +5,8 @@ import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
 import { Translations, Language } from "@/locales/types";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
@@ -23,9 +25,17 @@ export default function Footer() {
   const { language } = useLanguage();
   const t = translations[language];
   const currentYear = new Date().getFullYear();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
-    <footer className="bg-background border-t border-gray-800">
+    <motion.footer
+      className="bg-background border-t border-gray-800"
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.5 }}
+    >
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <div className="flex-shrink-0 mb-4 sm:mb-0">
@@ -48,6 +58,6 @@ export default function Footer() {
           </nav>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, Moon, Sun } from "lucide-react";
@@ -26,6 +25,18 @@ type AnimatedLinkProps = {
 const AnimatedLink = ({ href, children, onClick }: AnimatedLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+
+    onClick();
+  };
+
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -37,7 +48,7 @@ const AnimatedLink = ({ href, children, onClick }: AnimatedLinkProps) => {
       <Link
         href={href}
         className="relative text-foreground hover:text-[#0079f0] transition-colors pb-1"
-        onClick={onClick}
+        onClick={handleClick}
       >
         {children}
         <motion.div
@@ -51,7 +62,11 @@ const AnimatedLink = ({ href, children, onClick }: AnimatedLinkProps) => {
   );
 };
 
-export default function Navbar() {
+interface NavbarProps {
+  className?: string;
+}
+
+export default function Navbar({ className }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleDarkMode } = useTheme();
   const { language, toggleLanguage } = useLanguage();
@@ -62,20 +77,22 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-transparent fixed w-full z-10 py-2 backdrop-filter backdrop-blur-md bg-background/70 sticky top-0">
+    <nav
+      className={`bg-transparent w-full z-10 py-2 backdrop-filter backdrop-blur-md bg-background/70 sticky top-0 ${className}`}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <button
               onClick={toggleDarkMode}
-              className="text-foreground hover:text-[#0079f0] transition-colors cursor-pointer p-2" // Color del hover
+              className="text-foreground hover:text-[#0079f0] transition-colors cursor-pointer p-2"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
             </button>
             <button
               onClick={toggleLanguage}
-              className="text-foreground hover:text-[#0079f0] transition-colors cursor-pointer flex items-center" // Color del hover
+              className="text-foreground hover:text-[#0079f0] transition-colors cursor-pointer flex items-center"
               aria-label="Toggle language"
             >
               <span
@@ -121,7 +138,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-foreground hover:text-[#0079f0] cursor-pointer p-2" // Color del hover
+              className="text-foreground hover:text-[#0079f0] cursor-pointer p-2"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

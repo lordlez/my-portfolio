@@ -14,7 +14,8 @@ import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
 import { Translations, Language } from "@/locales/types";
-import { motion } from "framer-motion"; // Importar Framer Motion
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
@@ -32,12 +33,25 @@ const skills = [
   { name: "Git", icon: faGitAlt, color: "text-orange-500" },
 ];
 
-export default function Skills() {
+interface SkillsProps {
+  className?: string;
+}
+
+export default function Skills({ className }: SkillsProps) {
   const { language } = useLanguage();
   const t = translations[language];
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
-    <section id="habilidades" className="max-w-7xl mx-auto px-4 py-16">
+    <motion.section
+      id="habilidades"
+      className={`max-w-7xl mx-auto px-4 py-16 ${className}`}
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8 }}
+    >
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold mb-4">{t.skills.title}</h2>
         <p className="text-foreground text-lg max-w-3xl mx-auto">
@@ -56,14 +70,11 @@ export default function Skills() {
             }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            {/* Efecto de reflejo en el nombre */}
             <motion.div
               className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0"
               whileHover={{ opacity: 1, x: ["-100%", "100%"] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
             />
-
-            {/* Icono y nombre de la skill */}
             <FontAwesomeIcon
               icon={skill.icon}
               className={`${skill.color} hover:scale-110 transition-transform`}
@@ -75,6 +86,6 @@ export default function Skills() {
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

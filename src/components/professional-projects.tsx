@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import type { Translations, Language } from "@/locales/types";
 
 interface Project {
@@ -86,15 +86,30 @@ function useIsMobile() {
   return isMobile;
 }
 
-export default function ProfessionalProjects() {
+interface ProfessionalProjectsProps {
+  className?: string;
+}
+
+export default function ProfessionalProjects({
+  className,
+}: ProfessionalProjectsProps) {
   const { language } = useLanguage();
   const t = translations[language];
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const professionalProjects =
     language === "es" ? professionalProjectsES : professionalProjectsEN;
 
   return (
-    <section id="trabajos" className="max-w-7xl mx-auto px-4 py-16">
+    <motion.section
+      id="trabajos"
+      className={`max-w-7xl mx-auto px-4 py-16 ${className}`}
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.5 }}
+    >
       <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0 }}
@@ -119,7 +134,7 @@ export default function ProfessionalProjects() {
           />
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
 
