@@ -6,18 +6,33 @@ import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
 import { Translations, Language } from "@/locales/types";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
   en: enTranslations,
 };
 
-export default function Hero() {
+interface HeroProps {
+  className?: string;
+}
+
+export default function Hero({ className }: HeroProps) {
   const { language } = useLanguage();
   const t = translations[language];
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
-    <section id="inicio" className="pt-28 pb-16 max-w-7xl mx-auto px-4 py-16">
+    <motion.section
+      id="inicio"
+      className={`max-w-7xl mx-auto px-4 py-16 ${className}`}
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.5 }}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center md:space-x-8">
           <div className="max-w-2xl flex-1">
@@ -57,6 +72,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

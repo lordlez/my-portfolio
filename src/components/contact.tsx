@@ -6,10 +6,38 @@ import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
 import type { Translations, Language } from "@/locales/types";
+import { motion, useInView } from "framer-motion";
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
   en: enTranslations,
+};
+
+interface SocialIconProps {
+  href: string;
+  ariaLabel: string;
+  children: React.ReactNode;
+}
+
+const SocialIcon = ({ href, ariaLabel, children }: SocialIconProps) => {
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-foreground hover:text-primary cursor-pointer flex items-center justify-center"
+      aria-label={ariaLabel}
+      whileHover={{
+        scale: 1.2,
+        rotate: 5,
+        y: -5,
+        transition: { type: "spring", stiffness: 400, damping: 10 },
+      }}
+      whileTap={{ scale: 0.9 }}
+    >
+      {children}
+    </motion.a>
+  );
 };
 
 interface FormErrors {
@@ -30,11 +58,12 @@ export default function Contact() {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
   const messageInputRef = useRef<HTMLTextAreaElement>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     const styleElement = document.createElement("style");
     styleElement.textContent = `
-      /* Eliminar solo el fondo de autocompletado */
       input:-webkit-autofill,
       input:-webkit-autofill:hover,
       input:-webkit-autofill:focus,
@@ -99,6 +128,7 @@ export default function Contact() {
     t.contact.nameMin,
     t.contact.emailInvalid,
     t.contact.messageMin,
+    errors,
   ]);
 
   const validateForm = (formData: {
@@ -167,9 +197,13 @@ export default function Contact() {
   };
 
   return (
-    <section
+    <motion.section
       id="contacto"
       className="container-section max-w-7xl mx-auto px-4 py-16"
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1.5 }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
@@ -181,33 +215,21 @@ export default function Contact() {
           </p>
 
           <div className="flex items-center space-x-6 mb-8">
-            <a
-              href="https://github.com/lordlez"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
-              aria-label="GitHub"
-            >
+            <SocialIcon href="https://github.com/lordlez" ariaLabel="GitHub">
               <Github className="w-8 h-8" />
-            </a>
-            <a
+            </SocialIcon>
+            <SocialIcon
               href="https://linkedin.com/in/lorenzolezcano/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
-              aria-label="LinkedIn"
+              ariaLabel="LinkedIn"
             >
               <Linkedin className="w-8 h-8" />
-            </a>
-            <a
+            </SocialIcon>
+            <SocialIcon
               href="https://instagram.com/lordlez/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-foreground hover:text-primary transition-colors cursor-pointer"
-              aria-label="Instagram"
+              ariaLabel="Instagram"
             >
               <Instagram className="w-8 h-8" />
-            </a>
+            </SocialIcon>
           </div>
         </div>
 
@@ -296,10 +318,12 @@ export default function Contact() {
                 )}
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors flex items-center justify-center gap-2 text-lg cursor-pointer"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
                 {isSubmitting ? (
                   t.contact.sending
@@ -308,7 +332,7 @@ export default function Contact() {
                     {t.contact.send} <Send className="w-5 h-5" />
                   </>
                 )}
-              </button>
+              </motion.button>
 
               {submitStatus === "error" && (
                 <p className="mt-4 text-red-400 text-sm">{t.contact.error}</p>
@@ -317,6 +341,6 @@ export default function Contact() {
           )}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
