@@ -14,6 +14,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
 import { Translations, Language } from "@/locales/types";
+import { motion } from "framer-motion"; // Importar Framer Motion
 
 const translations: Record<Language, Translations> = {
   es: esTranslations,
@@ -46,19 +47,32 @@ export default function Skills() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {skills.map((skill, index) => (
-          <div
+          <motion.div
             key={index}
-            className="p-6 rounded-lg border border-gray-800 bg-card flex flex-col items-center justify-center hover:border-gray-700 transition-colors"
+            className="p-6 rounded-lg border border-gray-800 bg-card flex flex-col items-center justify-center relative overflow-hidden"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 0px 20px rgba(255, 255, 255, 0.3)",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
+            {/* Efecto de reflejo en el nombre */}
+            <motion.div
+              className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0"
+              whileHover={{ opacity: 1, x: ["-100%", "100%"] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* Icono y nombre de la skill */}
             <FontAwesomeIcon
               icon={skill.icon}
-              className={`${skill.color}`}
+              className={`${skill.color} hover:scale-110 transition-transform`}
               size="3x"
             />
-            <h3 className="text-lg font-medium text-foreground mt-4">
+            <h3 className="text-lg font-medium text-foreground mt-4 relative z-10">
               {skill.name}
             </h3>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
