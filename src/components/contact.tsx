@@ -1,5 +1,7 @@
 "use client";
 
+import type React from "react";
+
 import { useState, type FormEvent, useEffect, useRef } from "react";
 import { Github, Instagram, Linkedin, Send } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -237,12 +239,24 @@ export default function Contact() {
           {submitStatus === "success" ? (
             <div className="text-center p-8">
               <p className="text-foreground mb-4">{t.contact.success}</p>
-              <button
+              <motion.button
                 onClick={() => setSubmitStatus(null)}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors cursor-pointer"
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md cursor-pointer"
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "#1E40AF",
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10,
+                }}
               >
                 {t.contact.another}
-              </button>
+              </motion.button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} method="POST" noValidate>
@@ -321,9 +335,19 @@ export default function Contact() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors flex items-center justify-center gap-2 text-lg cursor-pointer"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
+                className="w-full px-6 py-3 bg-blue-600 text-white rounded-md flex items-center justify-center gap-2 text-lg cursor-pointer"
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "#1E40AF",
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10,
+                }}
               >
                 {isSubmitting ? (
                   t.contact.sending
