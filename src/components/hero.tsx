@@ -53,7 +53,8 @@ export default function Hero({ className }: HeroProps) {
                 {t.hero.contact}
               </a>
               <a
-                href="#"
+                href="/LEZCANO_LORENZO.pdf"
+                download="LEZCANO_LORENZO.pdf"
                 className="px-6 py-3 border border-gray-600 text-foreground rounded-md transition-colors flex items-center gap-2"
               >
                 <Download size={18} /> {t.hero.downloadCV}
