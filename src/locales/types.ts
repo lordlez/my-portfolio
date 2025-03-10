@@ -31,6 +31,9 @@ export interface Translations {
     name: string;
     email: string;
     message: string;
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    messagePlaceholder: string;
     send: string;
     success: string;
     error: string;

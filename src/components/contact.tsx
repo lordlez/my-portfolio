@@ -260,7 +260,7 @@ export default function Contact() {
                     id="name"
                     name="name"
                     required
-                    placeholder={t.contact.name}
+                    placeholder={t.contact.namePlaceholder}
                     className="w-full px-4 py-2 bg-background text-foreground rounded-md focus:outline-none border-none"
                     style={{ WebkitTextFillColor: "inherit", color: "inherit" }}
                   />
@@ -284,7 +284,7 @@ export default function Contact() {
                     id="email"
                     name="email"
                     required
-                    placeholder={t.contact.email}
+                    placeholder={t.contact.emailPlaceholder}
                     className="w-full px-4 py-2 bg-background text-foreground rounded-md focus:outline-none border-none"
                     style={{ WebkitTextFillColor: "inherit", color: "inherit" }}
                   />
@@ -308,7 +308,7 @@ export default function Contact() {
                     name="message"
                     required
                     rows={5}
-                    placeholder={t.contact.message}
+                    placeholder={t.contact.messagePlaceholder}
                     className="w-full px-4 py-2 bg-background text-foreground rounded-md focus:outline-none border-none"
                     style={{ WebkitTextFillColor: "inherit", color: "inherit" }}
                   />
