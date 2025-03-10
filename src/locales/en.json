@@ -33,7 +33,7 @@
     "message": "Message",
     "namePlaceholder": "Enter your name...",
     "emailPlaceholder": "email@example.com",
-    "messagePlaceholder": "Enter yout message...",
+    "messagePlaceholder": "Enter your message...",
     "send": "Send Message",
     "success": "Message sent successfully! I'll get back to you as soon as possible.",
     "error": "There was an error sending the message. Please try again.",
