@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
-import { Translations, Language } from "@/locales/types";
+import type { Translations, Language } from "@/locales/types";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <div className="flex-shrink-0 mb-4 sm:mb-0">
             <Link href="/" className="transition-colors">
-              <p className="text-sm text-foreground hover:text-primary transition-colors">
+              <p className="text-sm text-foreground hover:text-[#0079f0] transition-colors">
                 {t.footer.copyright.replace("{year}", currentYear.toString())}
               </p>
             </Link>
@@ -50,7 +50,7 @@ export default function Footer() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm text-foreground hover:text-primary transition-colors"
+                className="text-sm text-foreground hover:text-[#0079f0] transition-colors"
               >
                 {t.navbar[link.name as keyof typeof t.navbar]}
               </Link>
