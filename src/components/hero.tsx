@@ -5,7 +5,7 @@ import { Download } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import esTranslations from "@/locales/es.json";
 import enTranslations from "@/locales/en.json";
-import { Translations, Language } from "@/locales/types";
+import type { Translations, Language } from "@/locales/types";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
@@ -46,18 +46,43 @@ export default function Hero({ className }: HeroProps) {
               {t.hero.description}
             </p>
             <div className="flex space-x-4">
-              <a
+              <motion.a
                 href="#contacto"
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+                className="px-6 py-3 bg-blue-600 text-white rounded-md"
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "#1E40AF",
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10,
+                }}
               >
                 {t.hero.contact}
-              </a>
-              <a
-                href="#"
-                className="px-6 py-3 border border-gray-600 text-foreground rounded-md transition-colors flex items-center gap-2"
+              </motion.a>
+              <motion.a
+                href="/LEZCANO_LORENZO.pdf"
+                download="LEZCANO_LORENZO.pdf"
+                className="px-6 py-3 border border-gray-600 text-foreground rounded-md flex items-center gap-2"
+                whileHover={{
+                  scale: 1.05,
+                  borderColor: "#60A5FA",
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10,
+                }}
               >
                 <Download size={18} /> {t.hero.downloadCV}
-              </a>
+              </motion.a>
             </div>
           </div>
           <div className="md:block mt-8 md:mt-0 flex-shrink-0">
