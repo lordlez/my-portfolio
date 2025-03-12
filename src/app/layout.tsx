@@ -1,14 +1,19 @@
 "use client";
 
 import type React from "react";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import FontAwesomeConfig from "./fontawesome";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import ParticleBackground from "@/components/particle-background";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-poppins",
+});
 
 export default function RootLayout({
   children,
@@ -16,11 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={poppins.variable}>
       <head>
         <FontAwesomeConfig />
       </head>
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <ThemeProvider>
           <LanguageProvider>
             <ParticleBackground />
