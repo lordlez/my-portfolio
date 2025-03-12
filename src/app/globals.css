@@ -7,6 +7,7 @@
   --secondary: #6a5acd; /* Azul secundario */
   --accent: #7b68ee; /* Acento */
   --card: #111827; /* Fondo de tarjetas oscuro */
+  --font-poppins: "Poppins", sans-serif;
 }
 
 [data-theme="light"] {
@@ -21,6 +22,7 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
+  font-family: var(--font-poppins);
 }
 
 @layer components {
