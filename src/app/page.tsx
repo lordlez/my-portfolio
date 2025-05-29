@@ -9,7 +9,7 @@ import Footer from "@/components/footer";
 export default function Home() {
   return (
     <main>
-      <Navbar className="mb-52" />
+      <Navbar className="mb-40" />
       <Hero className="mb-40" />
       <Skills className="mb-40" />
       <ProfessionalProjects className="mb-40" />
