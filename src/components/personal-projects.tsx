@@ -26,7 +26,7 @@ const translations: Record<Language, Translations> = {
 const personalProjectsES = [
   {
     title: "GuitarLA",
-    image: "/guitarla-img.png",
+    image: "/guitar-la-img.png",
     description: "Plataforma de ventas de guitarras.",
     technologies: ["HTML", "CSS", "JavaScript"],
     demoUrl: "https://shopping-cart-lordlez.netlify.app/",
