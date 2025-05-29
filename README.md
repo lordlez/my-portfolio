@@ -27,6 +27,7 @@ Para el desarrollo de este portfolio, se emplearon las siguientes tecnologías c
 
 * **React:** Utilizado para construir una interfaz de usuario dinámica y modular.
 * **Next.js:** Empleado para el renderizado del lado del servidor (SSR) y la optimización del rendimiento.
+* **TypeScript:** Incorporado para un desarrollo más robusto y escalable, añadiendo tipado estático a JavaScript.
 * **Tailwind CSS:** Para un diseño rápido y responsivo, permitiendo una experiencia visual atractiva.
 * **Lucide React:** Usado para integrar iconos modernos y personalizables.
 * **Librerías Adicionales:** Implementación de librerías complementarias para mejorar la comodidad visual y la experiencia del usuario.
